@@ -1,0 +1,280 @@
+[
+    {
+        "original": "The system should allow users to login securely",
+        "tokens": [
+            "The",
+            "system",
+            "should",
+            "allow",
+            "users",
+            "to",
+            "login",
+            "securely"
+        ],
+        "filtered_tokens": [
+            "system",
+            "allow",
+            "users",
+            "login",
+            "securely"
+        ],
+        "category": "Functional"
+    },
+    {
+        "original": "The system should have a secure payment integration system",
+        "tokens": [
+            "The",
+            "system",
+            "should",
+            "have",
+            "a",
+            "secure",
+            "payment",
+            "integration",
+            "system"
+        ],
+        "filtered_tokens": [
+            "system",
+            "have",
+            "secure",
+            "payment",
+            "integration",
+            "system"
+        ],
+        "category": "Non-Functional"
+    },
+    {
+        "original": "The system should have a secure login system\n",
+        "tokens": [
+            "The",
+            "system",
+            "should",
+            "have",
+            "a",
+            "secure",
+            "login",
+            "system"
+        ],
+        "filtered_tokens": [
+            "system",
+            "have",
+            "secure",
+            "login",
+            "system"
+        ],
+        "category": "Functional"
+    },
+    {
+        "original": "The system shouldn't use red color",
+        "tokens": [
+            "The",
+            "system",
+            "shouldn",
+            "t",
+            "use",
+            "red",
+            "color"
+        ],
+        "filtered_tokens": [
+            "system",
+            "shouldn",
+            "t",
+            "use",
+            "red",
+            "color"
+        ],
+        "category": "Uncertain"
+    },
+    {
+        "original": "The system should allow users to login securely",
+        "tokens": [
+            "The",
+            "system",
+            "should",
+            "allow",
+            "users",
+            "to",
+            "login",
+            "securely"
+        ],
+        "filtered_tokens": [
+            "system",
+            "allow",
+            "users",
+            "login",
+            "securely"
+        ],
+        "category": "Functional"
+    },
+    {
+        "original": "the system should provide authentication system",
+        "tokens": [
+            "the",
+            "system",
+            "should",
+            "provide",
+            "authentication",
+            "system"
+        ],
+        "filtered_tokens": [
+            "system",
+            "provide",
+            "authentication",
+            "system"
+        ],
+        "category": "Uncertain"
+    },
+    {
+        "original": "The system should allow users to login securely",
+        "tokens": [
+            "The",
+            "system",
+            "should",
+            "allow",
+            "users",
+            "to",
+            "login",
+            "securely"
+        ],
+        "filtered_tokens": [
+            "system",
+            "allow",
+            "users",
+            "login",
+            "securely"
+        ],
+        "category": "Functional"
+    },
+    {
+        "original": "abcd",
+        "tokens": [
+            "abcd"
+        ],
+        "filtered_tokens": [
+            "abcd"
+        ],
+        "category": "Uncertain"
+    },
+    {
+        "original": "abcd",
+        "tokens": [
+            "abcd"
+        ],
+        "filtered_tokens": [
+            "abcd"
+        ],
+        "category": "Uncertain"
+    },
+    {
+        "original": "abcd",
+        "tokens": [
+            "abcd"
+        ],
+        "filtered_tokens": [
+            "abcd"
+        ],
+        "category": "Uncertain"
+    },
+    {
+        "original": "The system should allow users to search the product by category, name, price, etc",
+        "tokens": [
+            "The",
+            "system",
+            "should",
+            "allow",
+            "users",
+            "to",
+            "search",
+            "the",
+            "product",
+            "by",
+            "category",
+            "name",
+            "price",
+            "etc"
+        ],
+        "filtered_tokens": [
+            "system",
+            "allow",
+            "users",
+            "search",
+            "product",
+            "category",
+            "name",
+            "price",
+            "etc"
+        ],
+        "category": "Functional"
+    },
+    {
+        "original": "The search feature should return results within 30 seconds",
+        "tokens": [
+            "The",
+            "search",
+            "feature",
+            "should",
+            "return",
+            "results",
+            "within",
+            "30",
+            "seconds"
+        ],
+        "filtered_tokens": [
+            "search",
+            "feature",
+            "return",
+            "results",
+            "within",
+            "30",
+            "seconds"
+        ],
+        "category": "Functional"
+    },
+    {
+        "original": "The website must be secure and protect payment information of users",
+        "tokens": [
+            "The",
+            "website",
+            "must",
+            "be",
+            "secure",
+            "and",
+            "protect",
+            "payment",
+            "information",
+            "of",
+            "users"
+        ],
+        "filtered_tokens": [
+            "website",
+            "must",
+            "be",
+            "secure",
+            "protect",
+            "payment",
+            "information",
+            "users"
+        ],
+        "category": "Non-Functional"
+    },
+    {
+        "original": "The platform needs to handle many users",
+        "tokens": [
+            "The",
+            "platform",
+            "needs",
+            "to",
+            "handle",
+            "many",
+            "users"
+        ],
+        "filtered_tokens": [
+            "platform",
+            "needs",
+            "handle",
+            "many",
+            "users"
+        ],
+        "category": "Uncertain"
+    }
+]
