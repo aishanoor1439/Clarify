@@ -1,9 +1,0 @@
-id,source,original_text,label,notes,stakeholder
-1,GitHub,"System shall allow user registration using email and password",FR,,Developer
-2,GitHub,"System must respond within 2 seconds for all queries",NFR,,QA
-3,Review,"Please add dark mode",FR,,User
-4,Jira,"Application must comply with GDPR regulations",CONSTRAINT,,Manager
-5,Support Ticket,"The app is very slow sometimes",NFR,Performance issue,User
-6,Transcript,"We might want some kind of offline support, not sure",AMBIGUOUS,,Client
-7,Review,"I love the color scheme!",IRRELEVANT,,User
-8,Jira,"System shall allow role-based access control",FR,,Developer

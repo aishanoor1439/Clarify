@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requirement Automation System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+
+  <!-- ================= Requirement Analysis ================= -->
+  <h2 class="mb-4">Requirement Automation System</h2>
+  <div class="mb-3">
+      <label for="requirementInput" class="form-label">Enter Requirement:</label>
+      <textarea class="form-control" id="requirementInput" rows="3" placeholder="Type your requirement here..."></textarea>
+  </div>
+  <button class="btn btn-primary mb-4" id="analyzeBtn">Analyze</button>
+
+  <div class="mt-4" id="result" style="display:none;">
+      <h4>Analysis Result:</h4>
+      <p><strong>Original:</strong> <span id="original"></span></p>
+      <p><strong>Tokens:</strong> <span id="tokens"></span></p>
+      <p><strong>Filtered Tokens:</strong> <span id="filtered_tokens"></span></p>
+      <p><strong>Category:</strong> <span id="category"></span></p>
+  </div>
+
+  <hr>
+
+  <!-- ================= Messaging Section ================= -->
+  <div class="card border-0 shadow-sm">
+    <div class="card-header bg-secondary text-white">
+      <h5 class="mb-0"><i class="fas fa-envelope me-2"></i>Project Messaging</h5>
+    </div>
+    <div class="card-body">
+
+      <!-- Project Select -->
+      <div class="mb-3">
+        <label for="userProjectSelect" class="form-label">Select Project</label>
+        <select id="userProjectSelect" class="form-select">
+          <!-- Projects loaded via JS -->
+        </select>
+      </div>
+
+      <!-- Messages Container -->
+      <div id="userMessagesContainer" class="border rounded p-3 mb-3" style="height:300px; overflow-y:auto;">
+        <!-- Messages will appear here -->
+      </div>
+
+      <!-- Send Message Input -->
+      <div class="input-group">
+        <input type="text" id="userMessageInput" class="form-control" placeholder="Type your message...">
+        <button class="btn btn-primary" id="userSendMessageBtn">Send</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------------- Load Projects ----------------
+  async function loadUserProjects() {
+    try {
+      const res = await fetch('/projects');
+      const projects = await res.json();
+      const select = document.getElementById('userProjectSelect');
+      if (projects.length === 0) {
+        select.innerHTML = '<option value="">No projects available</option>';
+      } else {
+        select.innerHTML = projects.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+        loadUserMessages(); // Load messages for first project
+      }
+    } catch (err) {
+      console.error("Error loading projects:", err);
+    }
+  }
+
+  // ---------------- Load Messages ----------------
+  async function loadUserMessages() {
+    const projectId = document.getElementById('userProjectSelect').value;
+    if (!projectId) return;
+
+    try {
+      const res = await fetch(`/messages/${projectId}`);
+      const messages = await res.json();
+      const container = document.getElementById('userMessagesContainer');
+      if (messages.length === 0) {
+        container.innerHTML = '<p class="text-muted">No messages yet.</p>';
+      } else {
+        container.innerHTML = messages.map(m => `
+          <div class="mb-2">
+            <strong>${m.sender_email}</strong>: ${m.content}
+          </div>
+        `).join('');
+      }
+      container.scrollTop = container.scrollHeight;
+    } catch (err) {
+      console.error("Error loading messages:", err);
+    }
+  }
+
+  // ---------------- Send Message ----------------
+  document.getElementById('userSendMessageBtn').addEventListener('click', async () => {
+    const projectId = document.getElementById('userProjectSelect').value;
+    const content = document.getElementById('userMessageInput').value.trim();
+    if (!projectId) return alert("Select a project first.");
+    if (!content) return alert("Message cannot be empty.");
+
+    try {
+      // Get admin to send message to
+      const resAdmin = await fetch('/get_admin');
+      const admin = await resAdmin.json();
+
+      await fetch('/messages/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          project_id: projectId,
+          receiver_id: admin.id,
+          content: content
+        })
+      });
+
+      document.getElementById('userMessageInput').value = '';
+      loadUserMessages();
+    } catch (err) {
+      console.error("Error sending message:", err);
+    }
+  });
+
+  // ---------------- Event Listeners ----------------
+  document.getElementById('userProjectSelect').addEventListener('change', loadUserMessages);
+
+  // ---------------- Initial Load ----------------
+  window.addEventListener('DOMContentLoaded', loadUserProjects);
+</script>
+</body>
+</html>
